@@ -1174,6 +1174,23 @@
     // Inject the character SVG
     document.getElementById('characterSvg').innerHTML = characters[code];
 
+    // Anonymous counter ping. No personal data, just totals.
+    // Uses countapi.mileshilliard.com (free, no signup, public counters).
+    const typeKeyMap = {
+      'RV': 'kay-mbti-coach',
+      'RS': 'kay-mbti-builder',
+      'FV': 'kay-mbti-cheerleader',
+      'FS': 'kay-mbti-fixer'
+    };
+    const typeKey = typeKeyMap[code];
+    // Fire-and-forget: don't block the UI on this, don't show errors.
+    try {
+      fetch('https://countapi.mileshilliard.com/api/v1/hit/' + typeKey).catch(() => {});
+      fetch('https://countapi.mileshilliard.com/api/v1/hit/kay-mbti-total').catch(() => {});
+    } catch (e) {
+      // Silently ignore - the quiz still works whether or not the counter pings succeed.
+    }
+
     document.getElementById('resultCode').textContent = code;
     document.getElementById('resultName').textContent = profile.name;
     document.getElementById('resultTagline').textContent = profile.tagline;
@@ -1247,4 +1264,3 @@
 </script>
 </body>
 </html>
-Initial quiz

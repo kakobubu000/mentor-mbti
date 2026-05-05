@@ -1240,7 +1240,7 @@
   function shareResult() {
     const r = window._lastResult;
     if (!r) return;
-    const text = `I'm ${r.code} — ${r.profile.name}.\n\n${r.profile.tagline}\n\nFrom The MBTI for Mentors, based on Yunqi (Kay) He's dissertation research on emotion management in youth mentoring.`;
+    const text = `I'm ${r.code} — ${r.profile.name}.\n\n${r.profile.tagline}\n\nFrom The MBTI for Mentors, based on Yunqi (Kay) He's dissertation research on emotion management in youth mentoring. Please contact Kay at he000330@umn.edu for more info.`;
 
     if (navigator.clipboard) {
       navigator.clipboard.writeText(text).then(() => {
